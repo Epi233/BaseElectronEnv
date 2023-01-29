@@ -1,0 +1,47 @@
+{
+  "name": "baseelectronenv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/main/main.js",
+  "scripts": {
+    "webpack-main": "webpack --config webpack.main.config.js",
+    "webpack-render": "webpack --config webpack.render.config.js",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Epi233/BaseElectronEnv.git"
+  },
+  "author": "EpiGrf",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Epi233/BaseElectronEnv/issues"
+  },
+  "homepage": "https://github.com/Epi233/BaseElectronEnv#readme",
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.4",
+    "@electron-forge/maker-deb": "^6.0.4",
+    "@electron-forge/maker-rpm": "^6.0.4",
+    "@electron-forge/maker-squirrel": "^6.0.4",
+    "@electron-forge/maker-zip": "^6.0.4",
+    "@types/node": "^18.11.18",
+    "@types/webpack": "^5.28.0",
+    "css-loader": "^6.7.3",
+    "electron": "^22.1.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "node-loader": "^2.0.0",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.4.2",
+    "typescript": "^4.9.4",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-merge": "^5.8.0",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  }
+}
