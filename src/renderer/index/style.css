@@ -1,11 +1,9 @@
-body {
-    background-color:#d0e4fe;
-}
 h1 {
-    color:orange;
+    color: blueviolet;
     text-align:center;
 }
+
 p {
-    font-family:"Times New Roman";
+    color: brown;
     font-size:20px;
 }
