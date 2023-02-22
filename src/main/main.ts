@@ -1,10 +1,10 @@
-
-import { BrowserWindow, app, ipcMain } from 'electron';
-import path from "path";
+import {BrowserWindow, app, ipcMain} from 'electron';
+import path from 'path';
 
 let mainWindow: BrowserWindow | null = null;
 
-function createMainWindow() {
+function createMainWindow()
+{
     if (mainWindow)
         return;
 
@@ -21,19 +21,23 @@ function createMainWindow() {
     mainWindow.loadFile(path.resolve(__dirname, `../renderer/index/index.html`));
     mainWindow.on('close', () => mainWindow = null);
 
-    mainWindow.webContents.openDevTools()
+    mainWindow.webContents.openDevTools();
 }
 
-app.on('ready', () => {
+app.on('ready', () =>
+{
     createMainWindow();
 });
 
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
+app.on('window-all-closed', () =>
+{
+    if (process.platform !== 'darwin')
+    {
         app.quit();
     }
 });
 
-app.on('activate', () => {
+app.on('activate', () =>
+{
     createMainWindow();
 });
