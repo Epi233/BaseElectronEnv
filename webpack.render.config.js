@@ -24,4 +24,7 @@ module.exports = merge(webpackBaseConfig, {
             template: path.join(__dirname, 'src/renderer/index/index.html')
         }),
     ],
+    resolve: {
+        extensions: ['.ts', '.tsx', '.js']
+    }
 });

@@ -4,8 +4,10 @@
   "description": "",
   "main": "./dist/main/main.js",
   "scripts": {
-    "webpack-main": "webpack --config webpack.main.config.js",
-    "webpack-render": "webpack --config webpack.render.config.js",
+    "compile-main": "webpack --config webpack.main.config.js",
+    "compile-preload": "webpack --config webpack.preload.config.js",
+    "compile-render": "webpack --config webpack.render.config.js",
+    "compile": "webpack --config webpack.main.config.js && webpack --config webpack.preload.config.js && webpack --config webpack.render.config.js",
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make"

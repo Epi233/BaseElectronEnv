@@ -7,10 +7,10 @@ const webpackBaseConfig = require('./webpack.base.config');
 module.exports = merge(webpackBaseConfig, {
     mode: 'development',
     target: 'node',
-    entry: path.join(__dirname, 'src/main/main.ts'),
+    entry: path.join(__dirname, 'src/main/preload.ts'),
     output: {
         path: path.join(__dirname, 'dist/main'),
-        filename: 'main.js'
+        filename: 'preload.js'
     },
     externals: [nodeExternals()],
     plugins: [
