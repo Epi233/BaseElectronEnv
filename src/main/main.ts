@@ -1,6 +1,9 @@
-import {BrowserWindow, app, ipcMain} from 'electron';
-import path from 'path';
+import {app, BrowserWindow} from 'electron';
+import {GetIpcMain} from '../ipc/ipc';
+import {Api} from './preload';
+import path from "path";
 
+const ipcMain = GetIpcMain<Api>();
 let mainWindow: BrowserWindow | null = null;
 
 function createMainWindow()
@@ -10,7 +13,8 @@ function createMainWindow()
 
     mainWindow = new BrowserWindow({
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            preload: path.join(__dirname, 'preload.js')
         },
         minWidth: 450,
         minHeight: 350,
@@ -18,10 +22,16 @@ function createMainWindow()
         width: 1600
     });
 
-    mainWindow.loadFile(path.resolve(__dirname, `../renderer/index/index.html`));
+    mainWindow.loadURL(path.join(path.resolve(__dirname, '../'), './renderer/index/index.html'));
     mainWindow.on('close', () => mainWindow = null);
 
     mainWindow.webContents.openDevTools();
+
+    mainWindow.webContents.once('dom-ready', () =>
+    {
+        if (mainWindow !== null)
+            ipcMain.send(mainWindow, 'ipcMainToRender', 'This is message from main process to renderer process');
+    });
 }
 
 app.on('ready', () =>
@@ -41,3 +51,8 @@ app.on('activate', () =>
 {
     createMainWindow();
 });
+
+ipcMain.handle('ipcRenderToMain', async (_, message) =>
+{
+    console.log(message);
+})

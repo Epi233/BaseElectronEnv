@@ -30,3 +30,11 @@ const api: Api = {
 };
 
 contextBridge.exposeInMainWorld('IpcApi', api);
+
+declare global
+{
+    interface Window
+    {
+        IpcApi: Api;
+    }
+}
